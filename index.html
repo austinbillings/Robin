@@ -1,0 +1,22 @@
+<!doctype HTML>
+<html ng-app="DemoApp">
+<head>
+  <title>Robin Demo</title>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <link rel="stylesheet" href="bower_components/mansion/dist/mansion.css">
+  <link rel="stylesheet" href="bower_components/xx/dist/xx.min.css">
+  <script src="robin.js"></script>
+  <script>
+    var app = angular.module('DemoApp', ['ngAnimate', 'Robin']);
+    app.controller('Base', function ($scope, $rootScope, Robin) {
+
+    });
+  </script>
+</head>
+<body>
+  <robin></robin>
+</body>
+</htmL>

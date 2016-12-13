@@ -1,0 +1,36 @@
+{
+  "name": "robin",
+  "main": "robin.js",
+  "authors": [
+    "Austin Billings <austin@austinbillings.com>"
+  ],
+  "description": "A nifty modal plugin for AngularJS.",
+  "keywords": [
+    "modal",
+    "alert",
+    "prompt",
+    "angular",
+    "dialog",
+    "warning",
+    "hud"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^3.1.1",
+    "mansion": "^0.0.1",
+    "xx": "^1.0.3",
+    "angular": "^1.6.0",
+    "angular-animate": "^1.6.0"
+  },
+  "dependencies": {
+    "ringo": "^1.0.4"
+  }
+}
