@@ -9,6 +9,7 @@ angular.module('Robin').service('RobinUI', function () {
     fontWeight: 300,
     border: 'none',
     color: 'black',
+    accent: 'cyan',
     background: 'white',
     defaultIcon: 'comment-o',
     overlay: 'rgba(0, 0, 0, 0.8)',
@@ -18,7 +19,7 @@ angular.module('Robin').service('RobinUI', function () {
   service.themes = {
     dark: {
       background: 'transparent',
-      overlay: 'rgba(0, 0, 0, 0.9)',
+      overlay: 'rgba(0, 0, 0, 0.92)',
       color: 'white',
       border: 'none',
       shadow: false
@@ -31,23 +32,31 @@ angular.module('Robin').service('RobinUI', function () {
       shadow: false
     },
     inverted: {
-      background: 'black',
       color: 'white',
+      background: 'black',
       overlay: 'rgba(255, 255, 255, 0.9)'
     },
     pro: {
-      background: 'transparent',
+      radius: 3,
+      shadow: 'none',
       color: 'white',
-      border: '1px solid rgba(255,255,255,0.2)',
-      overlay: 'rgba(0, 0, 0, 0.95)',
-      radius: 0
+      overlay: 'rgba(0, 0, 0, 0.9)',
+      background: 'rgba(0, 0, 0, 0.5)',
+      border: '1px solid rgba(255,255,255,0.2)'
     },
     card: {
-      background: 'white',
+      radius: 10,
       color: 'black',
       border: 'none',
+      background: 'white',
       overlay: 'transparent',
-      radius: 10,
+      shadow: '0px 0px 20px rgba(0, 0, 0, 0.2)'
+    },
+    plaque: {
+      radius: 2,
+      color: 'white',
+      background: 'rgba(0, 0, 0, 0.9)',
+      overlay: 'transparent',
       shadow: '0px 0px 20px rgba(0, 0, 0, 0.2)'
     }
   }
@@ -68,9 +77,9 @@ angular.module('Robin').service('RobinUI', function () {
 
   service.applySettings = function (settings) {
     if (!settings || typeof settings != 'object') return;
-    Object.keys(service.defaults).forEach(function (key) {
-      if (settings.hasOwnProperty(key)) service.settings[key] = settings[key];
-    });
+    for (let key in service.defaults) {
+      if (key && key in settings) service.settings[key] = settings[key];
+    }
   }
 
   service.initialize = function (settings) {
@@ -97,6 +106,7 @@ angular.module('Robin').service('RobinUI', function () {
       justify-content: center;
       background-color: ${settings.overlay || 'transparent'};
     }
+
     robin modal {
       padding: 30px;
       flex-basis: 300px;
@@ -107,27 +117,37 @@ angular.module('Robin').service('RobinUI', function () {
       border-radius: ${settings.radius}px;
       box-shadow: ${settings.shadow || 'none'};
     }
-    robin .robin-icon {
-      color: ${settings.iconColor || settings.color};
-      font-size: ${settings.iconSize}px;
-      margin-bottom: 15px;
+
+    robin input {
+      width: 100%;
+      margin: 10px auto 20px;
+      padding: 10px;
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid ${settings.color};
+      background: transparent;
+      color: ${settings.color};
     }
+
     robin button {
       color: ${settings.color};
     }
-    robin modal-wrapper {
-      transition: ${settings.speed}s ease-in-out all;
+
+    robin .robin-icon {
+      font-size: ${settings.iconSize}px;
     }
-    robin modal-wrapper {
+
+    robin modal-wrapper,
+    robin modal-wrapper.ng-enter.ng-enter-active {
       transition: ${settings.speed}s ease-in-out all;
       opacity: 1;
     }
-    robin modal-wrapper.ng-enter, robin modal-wrapper.ng-leave.ng-leave-active {
+
+    robin modal-wrapper.ng-enter,
+    robin modal-wrapper.ng-leave.ng-leave-active {
       opacity: 0;
     }
-    robin modal-wrapper.ng-enter.ng-enter-active {
-      opacity: 1;
-    }`;
+    `;
   }
 
   return service;
