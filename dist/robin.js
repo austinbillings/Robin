@@ -116,9 +116,10 @@ angular.module('Robin').service('Robin', ['$timeout', '$rootScope', '$sce', '$q'
   };
 
   var service = {
-    version: '1.1.2',
+    version: '1.1.3',
     is: {
       alerting: false,
+      notifying: false,
       confirming: false,
       prompting: false,
       loading: false,
@@ -181,7 +182,7 @@ angular.module('Robin').service('Robin', ['$timeout', '$rootScope', '$sce', '$q'
   service.notify = function (message) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    service.mode('alerting');
+    service.mode('notifying');
     service.load(message, options);
     service.defuse();
     service.hold = true;
@@ -297,6 +298,6 @@ angular.module('Robin').directive('robin', ['Robin', function (Robin) {
       });
       Robin.initialize();
     },
-    template: '<modal-wrapper ng-if="!robin.is.hidden || robin.is.loading" ng-click="robin.clickClosed($event)">\n      <modal ng-if="!robin.is.hidden">\n        <ringo ng-if="robin.is.loading" ring-size="{{robin.settings.iconSize * 2}}" ring-thickness="2" ring-color="{{robin.settings.color}}"></ringo>\n        <span class="robin-icon" ng-hide="robin.is.loading" ng-class="robin.getIcon()"></span>\n        <p ng-if="robin.live.text" ng-bind-html="robin.trust(robin.live.text)"></p>\n        <input ng-if="robin.is.prompting" ng-model="robin.live.answer" autofocus="true" />\n        <div ng-if="robin.is.confirming || robin.is.prompting">\n          <button ng-click="robin.deny()">Nah</button>\n          <button ng-click="robin.affirm()">Yea</button>\n        </div>\n      </modal>\n    </modal-wrapper>'
+    template: '<modal-wrapper ng-if="!robin.is.hidden || robin.is.loading" ng-click="robin.clickClosed($event)">\n      <modal ng-if="!robin.is.hidden">\n        <ringo ng-if="robin.is.loading" ring-size="{{robin.settings.iconSize * 2}}" ring-thickness="2" ring-color="{{robin.settings.color}}"></ringo>\n        <span class="robin-icon" ng-hide="robin.is.loading" ng-class="robin.getIcon()"></span>\n        <p ng-if="robin.live.text" ng-bind-html="robin.trust(robin.live.text)"></p>\n        <input ng-if="robin.is.prompting" ng-model="robin.live.answer" autofocus="true" />\n        <div ng-if="robin.is.confirming || robin.is.prompting">\n          <button ng-click="robin.deny()">Nah</button>\n          <button ng-click="robin.affirm()">Yea</button>\n        </div>\n        <div ng-if="robin.is.notifying">\n          <button ng-click="robin.affirm()">Okay</button>\n        </div>\n      </modal>\n    </modal-wrapper>'
   };
 }]);
