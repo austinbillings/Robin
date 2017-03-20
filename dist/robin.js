@@ -116,6 +116,7 @@ angular.module('Robin').service('Robin', ['$timeout', '$rootScope', '$sce', '$q'
   };
 
   var service = {
+    version: '1.1.2',
     is: {
       alerting: false,
       confirming: false,

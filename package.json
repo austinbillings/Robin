@@ -1,6 +1,6 @@
 {
   "name": "robin",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A nifty modal plugin for AngularJS.",
   "main": "dist/robin.js",
   "scripts": {
