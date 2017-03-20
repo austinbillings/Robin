@@ -57,7 +57,7 @@ angular.module('Robin').service('Robin', ['$timeout', '$rootScope', '$sce', '$q'
 
   service.notify = (message, options = {}) => {
     service.mode('alerting');
-    service.load(meessage, options);
+    service.load(message, options);
     service.defuse();
     service.hold = true;
   }

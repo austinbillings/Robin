@@ -181,7 +181,7 @@ angular.module('Robin').service('Robin', ['$timeout', '$rootScope', '$sce', '$q'
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     service.mode('alerting');
-    service.load(meessage, options);
+    service.load(message, options);
     service.defuse();
     service.hold = true;
   };
