@@ -2,9 +2,10 @@ angular.module('Robin').service('Robin', ['$timeout', '$rootScope', '$sce', '$q'
   let fa = icon => 'fa fa-' + icon;
 
   let service = {
-    version: '1.1.2',
+    version: '1.1.3',
     is: {
       alerting: false,
+      notifying: false,
       confirming: false,
       prompting: false,
       loading: false,
@@ -57,7 +58,7 @@ angular.module('Robin').service('Robin', ['$timeout', '$rootScope', '$sce', '$q'
   }
 
   service.notify = (message, options = {}) => {
-    service.mode('alerting');
+    service.mode('notifying');
     service.load(message, options);
     service.defuse();
     service.hold = true;

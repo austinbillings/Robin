@@ -21,6 +21,9 @@ angular.module('Robin').directive('robin', ['Robin', (Robin) => {
           <button ng-click="robin.deny()">Nah</button>
           <button ng-click="robin.affirm()">Yea</button>
         </div>
+        <div ng-if="robin.is.notifying">
+          <button ng-click="robin.affirm()">Okay</button>
+        </div>
       </modal>
     </modal-wrapper>`
   };
