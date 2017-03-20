@@ -2,7 +2,7 @@ angular.module('Robin').service('Robin', ['$timeout', '$rootScope', '$sce', '$q'
   let fa = icon => 'fa fa-' + icon;
 
   let service = {
-    version: '1.1.4',
+    version: '1.1.5',
     is: {
       alerting: false,
       notifying: false,
@@ -62,6 +62,8 @@ angular.module('Robin').service('Robin', ['$timeout', '$rootScope', '$sce', '$q'
     service.load(message, options);
     service.defuse();
     service.hold = true;
+    service.promise = $q.defer();
+    return service.promise.promise;
   }
 
   service.confirm = (message, options = {}) => {
