@@ -8,6 +8,7 @@ angular.module('Robin').directive('robin', ['Robin', (Robin) => {
         if (e.keyCode === 13) scope.robin.handleEnter(e);
         if (e.keyCode === 27) scope.robin.handleEscape(e);
       });
+      angular.element(el).focus();
       Robin.initialize()
     },
     template:
@@ -18,11 +19,11 @@ angular.module('Robin').directive('robin', ['Robin', (Robin) => {
         <p ng-if="robin.live.text" ng-bind-html="robin.trust(robin.live.text)"></p>
         <input ng-if="robin.is.prompting" ng-model="robin.live.answer" autofocus="true" />
         <div ng-if="robin.is.confirming || robin.is.prompting">
-          <button ng-click="robin.deny()">Nah</button>
-          <button ng-click="robin.affirm()">Yea</button>
+          <button class="robin-button-deny" ng-click="robin.deny()">Nah</button>
+          <button class="robin-button-affirm" ng-click="robin.affirm()">Yea</button>
         </div>
         <div ng-if="robin.is.notifying">
-          <button ng-click="robin.continue()">Okay</button>
+          <button class="robin-button-continue" ng-click="robin.continue();">Okay</button>
         </div>
       </modal>
     </modal-wrapper>`

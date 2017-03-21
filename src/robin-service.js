@@ -43,6 +43,7 @@ angular.module('Robin').service('Robin', ['$timeout', '$rootScope', '$sce', '$q'
     for (let key in service.is) {
       service.is[key] = (key === state);
     }
+    if (_.any(service.is)) angular.element('robin').focus();
   }
 
   service.defuse = () => {
