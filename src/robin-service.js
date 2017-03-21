@@ -2,7 +2,7 @@ angular.module('Robin').service('Robin', ['$timeout', '$rootScope', '$sce', '$q'
   let fa = icon => 'fa fa-' + icon;
 
   let service = {
-    version: '1.1.5',
+    version: '1.1.6',
     is: {
       alerting: false,
       notifying: false,
